@@ -11,6 +11,11 @@
 		9B2EAF9D296D354500531217 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2EAF9C296D354500531217 /* ContentView.swift */; };
 		9B2EAF9F296D354700531217 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2EAF9E296D354700531217 /* Assets.xcassets */; };
 		9B2EAFA3296D354700531217 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2EAFA2296D354700531217 /* Preview Assets.xcassets */; };
+		9B2EAFAA296D5B3300531217 /* FileManager-Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2EAFA9296D5B3300531217 /* FileManager-Extention.swift */; };
+		9B4C8ECA2971351C009480D2 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4C8EC92971351C009480D2 /* Authentication.swift */; };
+		9B543FD2297280F000D8A18F /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B543FD1297280F000D8A18F /* Location.swift */; };
+		9BF400B52975254100D47891 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF400B42975254100D47891 /* EditView.swift */; };
+		9BF400B729753EE300D47891 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF400B629753EE300D47891 /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,12 @@
 		9B2EAF9E296D354700531217 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B2EAFA0296D354700531217 /* BucketList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BucketList.entitlements; sourceTree = "<group>"; };
 		9B2EAFA2296D354700531217 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9B2EAFA9296D5B3300531217 /* FileManager-Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-Extention.swift"; sourceTree = "<group>"; };
+		9B4C8EC8297133BC009480D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9B4C8EC92971351C009480D2 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		9B543FD1297280F000D8A18F /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9BF400B42975254100D47891 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		9BF400B629753EE300D47891 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +63,14 @@
 		9B2EAF99296D354500531217 /* BucketList */ = {
 			isa = PBXGroup;
 			children = (
+				9B4C8EC8297133BC009480D2 /* Info.plist */,
 				9B2EAF9A296D354500531217 /* BucketListApp.swift */,
 				9B2EAF9C296D354500531217 /* ContentView.swift */,
+				9BF400B629753EE300D47891 /* Result.swift */,
+				9BF400B42975254100D47891 /* EditView.swift */,
+				9B543FD1297280F000D8A18F /* Location.swift */,
+				9B4C8EC92971351C009480D2 /* Authentication.swift */,
+				9B2EAFA9296D5B3300531217 /* FileManager-Extention.swift */,
 				9B2EAF9E296D354700531217 /* Assets.xcassets */,
 				9B2EAFA0296D354700531217 /* BucketList.entitlements */,
 				9B2EAFA1296D354700531217 /* Preview Content */,
@@ -141,6 +158,11 @@
 			files = (
 				9B2EAF9D296D354500531217 /* ContentView.swift in Sources */,
 				9B2EAF9B296D354500531217 /* BucketListApp.swift in Sources */,
+				9BF400B52975254100D47891 /* EditView.swift in Sources */,
+				9B543FD2297280F000D8A18F /* Location.swift in Sources */,
+				9BF400B729753EE300D47891 /* Result.swift in Sources */,
+				9B4C8ECA2971351C009480D2 /* Authentication.swift in Sources */,
+				9B2EAFAA296D5B3300531217 /* FileManager-Extention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +289,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BucketList/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -303,6 +327,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BucketList/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
