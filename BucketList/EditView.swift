@@ -47,7 +47,7 @@ struct EditView: View {
                             Text(page.title)
                                 .font(.headline)
                             + Text(": ") +
-                            Text("Page description here")
+                            Text(page.description)
                                 .italic()
                         }
                     case .loading:
@@ -85,9 +85,7 @@ struct EditView: View {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             let decodedData = try JSONDecoder().decode(Result.self, from: data)
-            pages = decodedData.query.pages.values.sorted { lhs, rhs in
-                lhs.title < rhs.title
-            }
+            pages = decodedData.query.pages.values.sorted()
             loadingState = .loaded
         }
         catch {

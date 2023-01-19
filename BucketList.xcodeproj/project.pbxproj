@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B09F96D297695DB004CCAFE /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09F96C297695DB004CCAFE /* ContentView-ViewModel.swift */; };
 		9B2EAF9B296D354500531217 /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2EAF9A296D354500531217 /* BucketListApp.swift */; };
 		9B2EAF9D296D354500531217 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2EAF9C296D354500531217 /* ContentView.swift */; };
 		9B2EAF9F296D354700531217 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2EAF9E296D354700531217 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B09F96C297695DB004CCAFE /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
 		9B2EAF97296D354500531217 /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B2EAF9A296D354500531217 /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
 		9B2EAF9C296D354500531217 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				9B4C8EC8297133BC009480D2 /* Info.plist */,
 				9B2EAF9A296D354500531217 /* BucketListApp.swift */,
 				9B2EAF9C296D354500531217 /* ContentView.swift */,
+				9B09F96C297695DB004CCAFE /* ContentView-ViewModel.swift */,
 				9BF400B629753EE300D47891 /* Result.swift */,
 				9BF400B42975254100D47891 /* EditView.swift */,
 				9B543FD1297280F000D8A18F /* Location.swift */,
@@ -161,6 +164,7 @@
 				9BF400B52975254100D47891 /* EditView.swift in Sources */,
 				9B543FD2297280F000D8A18F /* Location.swift in Sources */,
 				9BF400B729753EE300D47891 /* Result.swift in Sources */,
+				9B09F96D297695DB004CCAFE /* ContentView-ViewModel.swift in Sources */,
 				9B4C8ECA2971351C009480D2 /* Authentication.swift in Sources */,
 				9B2EAFAA296D5B3300531217 /* FileManager-Extention.swift in Sources */,
 			);
@@ -284,9 +288,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BucketList/BucketList.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
+				DEVELOPMENT_TEAM = XHRN62S9RK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BucketList/Info.plist;
@@ -322,9 +328,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BucketList/BucketList.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
+				DEVELOPMENT_TEAM = XHRN62S9RK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BucketList/Info.plist;
