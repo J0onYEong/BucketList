@@ -6,6 +6,7 @@
 //
 
 import MapKit
+import LocalAuthentication
 
 extension ContentView {
     @MainActor class ViewModel: ObservableObject {
@@ -13,7 +14,12 @@ extension ContentView {
         @Published var center = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 35.5437411, longitude: 129.2562843)
                                                        , span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         @Published private(set) var locations: [Location]
-        @Published var selectedLocation: Location?
+        // Boolean value for state of authentication
+        @Published private(set) var isUnlocked = false
+        // They will show alert widow when authentication fails
+        @Published var showingAlert = false
+        @Published private(set) var alertTitle = ""
+        @Published private(set) var alertMessage = ""
         
         let savePath = FileManager.documentDirectory.appendingPathComponent("Locations")
         
@@ -32,17 +38,9 @@ extension ContentView {
             save()
         }
         
-        func updateSelectedLocation(location: Location) {
-            selectedLocation = location
-        }
-        
-        func updateLocations(location updatedLocation: Location) {
-            guard let selectedLoc = selectedLocation else {
-                print("there is no selected location")
-                return
-            }
-            if let index = locations.firstIndex(of: selectedLoc) {
-                locations[index] = updatedLocation
+        func updateLocations(oldValue: Location, newValue: Location) {
+            if let index = locations.firstIndex(of: oldValue) {
+                locations[index] = newValue
             }
             
             // save
@@ -55,6 +53,41 @@ extension ContentView {
                 try data.write(to: savePath, options: [.atomic, .completeFileProtection])
             } catch {
                 print("Unable to save data")
+            }
+        }
+        
+        // biometric authentication
+        func authenticate() {
+            let context = LAContext()
+            var error: NSError?
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                // reason for Touch ID
+                let reason = "We need it to unlock places data"
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in
+                    // Authentication success
+                    if success {
+                        Task { @MainActor in
+                            self.isUnlocked = true
+                        }
+                    } else {
+                        // authentication fails
+                    }
+                    // 기타 오류
+                    if let unwrappedError = error {
+                        Task { @MainActor in
+                            self.alertTitle = "인증 오류"
+                            self.alertMessage = unwrappedError.localizedDescription
+                            self.showingAlert = true
+                        }
+                    }
+                }
+            } else {
+                // Device isn't capable of biometric authentication
+                Task { @MainActor in
+                    self.alertTitle = "생체 인증 사용불가"
+                    self.alertMessage = "생체 인증을 사용할 수 없는 기기입니다."
+                    self.showingAlert = true
+                }
             }
         }
     }
