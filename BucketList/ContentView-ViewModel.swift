@@ -10,9 +10,6 @@ import LocalAuthentication
 
 extension ContentView {
     @MainActor class ViewModel: ObservableObject {
-        // ulsan Univ  35.5437411, 129.2562843
-        @Published var center = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 35.5437411, longitude: 129.2562843)
-                                                       , span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005))
         @Published private(set) var locations: [Location]
         // Boolean value for state of authentication
         @Published private(set) var isUnlocked = false

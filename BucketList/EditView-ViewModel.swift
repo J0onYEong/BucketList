@@ -13,19 +13,18 @@ extension EditView {
             case loading, loaded, failed
         }
         
-        @Published var targetLocation: Location
-        @Published var name: String
-        @Published var description: String
-        @Published private(set) var pages: [Page]
-        @Published private(set) var loadingState: LoadingState
+        @Published var targetLocation: Location?
+        @Published var name = ""
+        @Published var description = ""
+        @Published private(set) var pages: [Page] = []
+        @Published private(set) var loadingState: LoadingState = .loading
+    
         
-        
-        init(location: Location) {
+        func setLocation(location: Location) async {
             targetLocation = location
             name = location.name
             description = location.description
-            pages = []
-            loadingState = .loading
+            await fetchNearbyPlace()
         }
         
         func setLocation(target: Location) async {
@@ -36,7 +35,10 @@ extension EditView {
         }
         
         func updatedLocation() -> Location {
-            var loc = targetLocation
+            guard let unwrappedLoc = targetLocation else {
+                fatalError("targetLocation is nil")
+            }
+            var loc = unwrappedLoc
             loc.id = UUID()
             loc.name = name
             loc.description = description
@@ -44,7 +46,10 @@ extension EditView {
         }
         
         func fetchNearbyPlace() async {
-            let urlString = "https://en.wikipedia.org/w/api.php?ggscoord=\(targetLocation.coordinate.latitude)%7C\(targetLocation.coordinate.longitude)&action=query&prop=coordinates%7Cpageimages%7Cpageterms&colimit=50&piprop=thumbnail&pithumbsize=500&pilimit=50&wbptterms=description&generator=geosearch&ggsradius=10000&ggslimit=50&format=json"
+            guard let unwrappedLoc = targetLocation else {
+                fatalError("targetLocation is nil")
+            }
+            let urlString = "https://en.wikipedia.org/w/api.php?ggscoord=\(unwrappedLoc.coordinate.latitude)%7C\(unwrappedLoc.coordinate.longitude)&action=query&prop=coordinates%7Cpageimages%7Cpageterms&colimit=50&piprop=thumbnail&pithumbsize=500&pilimit=50&wbptterms=description&generator=geosearch&ggsradius=10000&ggslimit=50&format=json"
             
             guard let url = URL(string: urlString) else {
                 print("bad url")

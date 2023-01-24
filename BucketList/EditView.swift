@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct EditView: View {
-    @StateObject var viewModel: ViewModel
+    @StateObject var viewModel = ViewModel()
     var onSave: (Location) -> ()
+    var location: Location
     @Environment(\.dismiss) var dismiss
     
     init(location: Location, onSave: @escaping (Location) -> ()) {
         self.onSave = onSave
-        _viewModel = StateObject(wrappedValue: ViewModel(location: location))
+        self.location = location
     }
     
     var body: some View {
@@ -50,7 +51,7 @@ struct EditView: View {
                 }
             }
             .task {
-                await viewModel.fetchNearbyPlace()
+                await viewModel.setLocation(location: location)
             }
             .navigationTitle("Place details")
         }
